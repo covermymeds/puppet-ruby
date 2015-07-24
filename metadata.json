@@ -1,12 +1,12 @@
 {
-  "name": "covermymeds-scl_ruby",
+  "name": "covermymeds-ruby",
   "version": "1.0.0",
   "author": "CoverMyMeds",
   "license": "MIT",
   "summary": "Install one or more Ruby versions from Software Collections, as well as an optional list of gems",
-  "source": "https://github.com/covermymeds/puppet-scl_ruby",
-  "project_page": "https://github.com/covermymeds/puppet-scl_ruby",
-  "issues_url": "https://github.com/covermymeds/puppet-scl_ruby/issues",
+  "source": "https://github.com/covermymeds/puppet-ruby",
+  "project_page": "https://github.com/covermymeds/puppet-ruby",
+  "issues_url": "https://github.com/covermymeds/puppet-ruby/issues",
   "tags": ["software-collections", "scl", "ruby"],
   "operatingsystem_support": [
     { "operatingsystem":"RedHat", "operatingsystemrelease":[ "6", "7" ] }
