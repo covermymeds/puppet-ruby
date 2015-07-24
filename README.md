@@ -1,8 +1,6 @@
 # puppet-scl-ruby
 This module installs one or more Ruby versions via [Red Hat Software Collections](https://access.redhat.com/documentation/en-US/Red_Hat_Software_Collections/), as well as an optional list of gems.
 
-Note that the Puppet Forge module name is `scl_ruby`, whereas the actual Puppet class name is simply `ruby`.  This was done to ensure that the module name properly disambiguates itself from other Ruby modules on the Forge.
-
 The full functionality of this module requires Hiera.
 
 ## Rubies
