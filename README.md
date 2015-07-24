@@ -1,4 +1,4 @@
-# puppet-scl-ruby
+# puppet-ruby
 This module installs one or more Ruby versions via [Red Hat Software Collections](https://access.redhat.com/documentation/en-US/Red_Hat_Software_Collections/), as well as an optional list of gems.
 
 The full functionality of this module requires Hiera.
