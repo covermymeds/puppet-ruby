@@ -1,0 +1,23 @@
+<% if @passenger_ruby -%>
+PassengerRuby <%= @passenger_ruby %>
+<% end -%>
+RailsEnv <%= @app_env %>
+PassengerMaxInstances <%= @passenger_max_instances %>
+<% if @passenger_min_instances -%>
+PassengerMinInstances <%= @passenger_min_instances %>
+<% end -%>
+<% if @passenger_max_request_queue_size -%>
+PassengerMaxRequestQueueSize <%= @passenger_max_request_queue_size %>
+<% end -%>
+<% if @_allow_from -%>
+<Directory <%= @docroot -%>>
+Order deny,allow
+Deny from All
+<% @allow_from.each do |permitted_ip| -%>
+	Allow from <%= permitted_ip %>
+<% end -%>
+</Directory>
+<% end %>
+<% if @custom_options -%>
+<%= @custom_options %>
+<% end -%>
