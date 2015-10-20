@@ -1,7 +1,7 @@
 # puppet-ruby
 This module installs one or more Ruby versions via [Red Hat Software Collections](https://access.redhat.com/documentation/en-US/Red_Hat_Software_Collections/), as well as an optional list of gems.
 
-The full functionality of this module requires Hiera.
+The full functionality of this module requires Hiera. Should be future parser compatible. Please file issues or PRs if found to be not the case.
 
 ## Rubies
 To simply ensure that one or more Ruby versions are installed, use the base `ruby` class with an array of Ruby Software Collections names:
