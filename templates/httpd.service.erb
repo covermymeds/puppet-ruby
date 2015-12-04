@@ -5,8 +5,8 @@ After=network.target remote-fs.target nss-lookup.target
 [Service]
 Type=simple
 EnvironmentFile=/etc/sysconfig/httpd
-ExecStart=/bin/scl enable <%= @ruby_ver %> -- /usr/sbin/httpd $OPTIONS -DFOREGROUND
-ExecReload=/bin/scl enable <%= @ruby_ver %> -- /usr/sbin/httpd $OPTIONS -k graceful
+ExecStart=/bin/scl enable <%= @ruby_ver %> <%= @additional_scls %> -- /usr/sbin/httpd $OPTIONS -DFOREGROUND
+ExecReload=/bin/scl enable <%= @ruby_ver %> <%= @additional_scls %> -- /usr/sbin/httpd $OPTIONS -k graceful
 ExecStop=/bin/sh -c '/bin/kill -WINCH $(/bin/cat /var/run/httpd/httpd.pid)'
 # We want systemd to give httpd some time to finish gracefully, but still want
 # it to kill httpd after TimeoutStopSec if something went wrong during the
