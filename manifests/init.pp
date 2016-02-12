@@ -8,6 +8,8 @@
 # Parameters:
 # - $rubies: an array of Rubies to install.
 # - $devel: whether to install the -devel packages for each Ruby
+# - $bash: whether to symlink the default Ruby's enable script
+#           into /etc/profile.d, making it available to bash users
 #
 # The values of the $rubies array elements should be the name of the
 # corresponing Software Collection. For example, 'ruby193', 'ruby200'
@@ -29,6 +31,7 @@
 class ruby (
   $rubies = [],
   $devel  = true,
+  $bash  = true,
 ) {
 
   validate_array( $rubies )
@@ -66,10 +69,12 @@ class ruby (
   ruby::usr_local { $rubies: }
 
   # enable the default Ruby in all users' bash environments
-  file { '/etc/profile.d/scl-ruby.sh':
-    ensure  => link,
-    target  => "/opt/rh/${default_ruby}/enable",
-    require => Package["${default_ruby}-ruby"],
+  if $bash {
+    file { '/etc/profile.d/scl-ruby.sh':
+      ensure  => link,
+      target  => "/opt/rh/${default_ruby}/enable",
+      require => Package["${default_ruby}-ruby"],
+    }
   }
 
   # get the default set of system gems
