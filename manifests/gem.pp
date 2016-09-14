@@ -62,5 +62,6 @@ define ruby::gem (
   exec { "install gem ${gem} for ${ruby}":
     command => "/usr/bin/scl enable ${ruby} -- gem install ${gem} ${_v} ${_o}",
     unless  => "/usr/bin/scl enable ${ruby} -- gem list -i -l ${_v} ${gem}",
+    path    => "/usr/bin/scl enable ${ruby} -- echo \$PATH",
   }
 }
