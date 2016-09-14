@@ -68,7 +68,7 @@ class ruby (
   # enable the default Ruby in all users' bash environments
   file { '/etc/profile.d/scl-ruby.sh':
     ensure  => present,
-    content => "source scl_source enable ${default_ruby}",
+    content => "source scl_source enable ${default_ruby}\n",
     require => Package["${default_ruby}-ruby"],
   }
 
