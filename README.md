@@ -7,8 +7,8 @@ The full functionality of this module requires Hiera.
 To simply ensure that one or more Ruby versions are installed, use the base `ruby` class with an array of Ruby Software Collections names:
 
 ```
-  class { ruby: 
-    $rubies => [ 'ruby200', 'rh-ruby22', ],
+  class { 'ruby':
+    rubies => [ 'ruby200', 'rh-ruby22', ],
   }
 ```
 
