@@ -74,6 +74,8 @@ class ruby (
     mode  => '0644',
   }
 
+  # reverse rubies order to make sure the first in the list is the default ruby
+  # refer to repo README for default ruby definition
   reverse($rubies).each |Integer $id, String $version| {
     concat::fragment { $version:
       target => $_target_env,
