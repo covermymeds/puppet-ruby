@@ -27,4 +27,17 @@ describe 'ruby', :type => :class do
     end
   end
 
+  context 'multiple ruby envs enablement with correct order' do
+    let :params do
+      { :rubies => [ 'rh-ruby22', 'rh-ruby24' ] }
+    end
+    it { is_expected.to contain_concat__fragment("rh-ruby24").with(
+        'source'  => '/opt/rh/rh-ruby24/enable',
+        'target'  => '/etc/profile.d/scl-ruby.sh',
+       )}
+    it { is_expected.to contain_concat__fragment("rh-ruby22").with(
+        'source'  => '/opt/rh/rh-ruby22/enable',
+        'target'  => '/etc/profile.d/scl-ruby.sh',
+       )}
+  end
 end
