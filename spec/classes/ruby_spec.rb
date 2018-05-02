@@ -29,18 +29,20 @@ describe 'ruby', :type => :class do
 
   context 'multiple ruby envs enablement with reverse order of the array' do
     let :params do
-      { :rubies => [ 'rh-ruby26', 'rh-ruby22', 'rh-ruby24', 'rh-ruby20' ] }
+      { :rubies => [ 'rh-zzoriginalfirstelement', 'rh-ruby22', 'rh-ruby24', 'rh-aaoriginallastelement' ] }
     end
+    it { is_expected.to contain_concat("/etc/profile.d/scl-ruby.sh") }
+    it { is_expected.to contain_concat__fragment("rh-aaoriginallastelement").with(
+        'order'  => 0,
+       )}
     it { is_expected.to contain_concat__fragment("rh-ruby24").with(
-        'source' => '/opt/rh/rh-ruby24/enable',
-        'target' => '/etc/profile.d/scl-ruby.sh',
         'order'  => 1,
        )}
-
     it { is_expected.to contain_concat__fragment("rh-ruby22").with(
-        'source' => '/opt/rh/rh-ruby22/enable',
-        'target' => '/etc/profile.d/scl-ruby.sh',
         'order'  => 2,
+       )}
+    it { is_expected.to contain_concat__fragment("rh-zzoriginalfirstelement").with(
+        'order'  => 3,
        )}
   end
 end

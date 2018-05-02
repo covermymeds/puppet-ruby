@@ -7,7 +7,7 @@ The full functionality of this module requires Hiera.
 To simply ensure that one or more Ruby versions are installed, use the base `ruby` class with an array of Ruby Software Collections names:
 
 ```
-  class { ruby: 
+  class { ruby:
     $rubies => [ 'ruby200', 'rh-ruby22', ],
   }
 ```
@@ -31,7 +31,7 @@ Gems can be installed system-wide on a per-Ruby basis.
   }
 ```
 
-Any Gem executable (binary or script) will be installed into `/opt/rh/<ruby>/root/usr/local/bin`, and that directory will be added to the `PATH` environment variable inside the relevant Software Collection enable script.  This ensures that Gem executables will be available when the Software Collection is enabled. 
+Any Gem executable (binary or script) will be installed into `/opt/rh/<ruby>/root/usr/local/bin`, and that directory will be added to the `PATH` environment variable inside the relevant Software Collection enable script.  This ensures that Gem executables will be available when the Software Collection is enabled.
 
 The default Gem installation options include `--no-ridoc` and `--no-rdoc`. If you wish to install documentation, you may do so:
 ```
@@ -85,6 +85,13 @@ The default for SCL gems is to pass `--no-ridoc` and `--no-rdoc` to the installa
         version: 1.7.3
         ridoc: true
         rdoc: true
+
+## Running Tests
+
+To run the Puppet spec tests, you will need to run the setup rake task first:
+
+1. `rake spec_clean && rake spec_prep` to set up your environment, *especially* if you updated .fixtures.yml
+2. `rake spec` from current directory to start the test
 
 # Contributing
 Pull requests are warmly welcomed!
