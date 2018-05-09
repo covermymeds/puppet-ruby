@@ -65,11 +65,23 @@ class ruby (
   # in one shot
   ruby::usr_local { $rubies: }
 
-  # enable the default Ruby in all users' bash environments
-  file { '/etc/profile.d/scl-ruby.sh':
-    ensure  => link,
-    target  => "/opt/rh/${default_ruby}/enable",
-    require => Package["${default_ruby}-ruby"],
+  # enable Rubies in all users' bash environments
+  $_target_env = '/etc/profile.d/scl-ruby.sh'
+
+  concat { $_target_env:
+    owner => 'root',
+    group => 'root',
+    mode  => '0644',
+  }
+
+  # reverse rubies order to make sure the first in the list is the default ruby
+  # refer to repo README for default ruby definition
+  reverse($rubies).each |Integer $id, String $version| {
+    concat::fragment { $version:
+      target => $_target_env,
+      source => "/opt/rh/${version}/enable",
+      order  => $id,
+    }
   }
 
   # get the default set of system gems

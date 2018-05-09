@@ -2,5 +2,6 @@ fixtures:
   symlinks:
     ruby: "#{source_dir}"
   repositories:
-    "stdlib": "git://github.com/puppetlabs/puppetlabs-stdlib.git"
-    "rvm": "git://github.com/maestrodev/puppet-rvm.git"
+    stdlib: "git://github.com/puppetlabs/puppetlabs-stdlib.git"
+    rvm: "git://github.com/maestrodev/puppet-rvm.git"
+    concat: "git://github.com/puppetlabs/puppetlabs-concat.git"
